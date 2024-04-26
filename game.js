@@ -57,19 +57,31 @@ function getCPUMove() {
 }
 
 function processMove(cmd, cpu) {
-  let winner = getWinner(cmd, cpu)
-  if(winner === 0) {
-    console.log("You tie.\n");
-   ties++;
+  if (cpu === 'r') {
+    console.log(`You pick ${cmd}, computer picks ${cpu}.`);
   }
+  else if (cpu === 'r' && cmd === 'r') {
+    console.log(`You tie ${cmd}, computer picks ${cpu}.`);
+  }
+  else if (cpu === 'r' && cmd === 'p'){
+    console.log(`You win ${cmd}, computer picks ${cpu}.`);
+  }
+  else if (cpu === 'r' && cmd === 's'){
+    console.log(`You lose ${cmd}, computer picks ${cpu}.`);
+  }
+  //   let winner = getWinner(cmd, cpu)
+//   if(winner === 0) {
+//     console.log("You tie.\n");
+//    ties++;
+//   }
 
-  else if(winner === 1) {
-    console.log("You win!\n");
-    wins++;
-  } else { // loss
-    console.log("You lose...\n");
-    losses++;
-  }
+//   else if(winner === 1) {
+//     console.log("You win!\n");
+//     wins++;
+//   } else { // loss
+//     console.log("You lose...\n");
+//     losses++;
+//   }
 }
 
 /******************************* MAIN FUNCTION *******************************/
