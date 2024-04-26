@@ -50,11 +50,26 @@ function getWinner(move1, move2) {
 
 
 function getCPUMove() {
-  // Your code here
+  const validMoveKeys = Object.keys(VALID_MOVES);
+  const randomIndex = Math.floor(Math.random() * validMoveKeys.length);
+  const cpu = validMoveKeys[randomIndex];
+  return cpu
 }
 
 function processMove(cmd, cpu) {
-  // Your code here
+  let winner = getWinner(cmd, cpu)
+  if(winner === 0) {
+    console.log("You tie.\n");
+   ties++;
+  }
+
+  else if(winner === 1) {
+    console.log("You win!\n");
+    wins++;
+  } else { // loss
+    console.log("You lose...\n");
+    losses++;
+  }
 }
 
 /******************************* MAIN FUNCTION *******************************/
@@ -75,17 +90,23 @@ function promptInput(rl) {
       rl.close();
       return;
     } else if (VALID_MOVES[cmd]){
-      const validMoveKeys = Object.keys(VALID_MOVES);
-      const randomIndex = Math.floor(Math.random() * validMoveKeys.length);
-      const cpu = validMoveKeys[randomIndex];
+      // const validMoveKeys = Object.keys(VALID_MOVES);
+      // const randomIndex = Math.floor(Math.random() * validMoveKeys.length);
+      // const cpu = validMoveKeys[randomIndex];
+      const cpu = getCPUMove()
 
       console.log(`You pick ${cmd}, computer picks ${cpu}.`);
 
-      if (cmd === cpu) { // tie
-        console.log("You tie.\n");
-        ties++;
-      }
-      else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
+      // if (cmd === cpu)  // tie
+        let winner = getWinner(cmd, cpu)
+        if(winner === 0) {
+          console.log("You tie.\n");
+         ties++;
+        }
+
+
+      //else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
+      else if(winner === 1) {
         console.log("You win!\n");
         wins++;
       } else { // loss
