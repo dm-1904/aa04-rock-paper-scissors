@@ -25,19 +25,36 @@ let ties = 0;
 
 /***************************** HELPER FUNCTIONS ******************************/
 function printHelp() {
-  // Your code here 
+  // let arr = ['r', 'p', 's', 'q', 'h']
+  // for(let el of arr){
+  //   console.log(`  Type ${el} `)
+  // }
+
+  console.log("  Type 'r' for Rock");
+  console.log("  Type 'p' for Paper");
+  console.log("  Type 's' for Scissors");
+  console.log("  Type 'q' to quit");
+  console.log("  Type 'h' for a list of valid commands\n");
+  return
 }
 
 function getWinner(move1, move2) {
-  // Your code here 
+  if(move1 === move2) return 0
+  if((move1 === 's') && (move2 === 'p')) return 1
+  if((move1 === 'p') && (move2 === 'r')) return 1
+  if((move1 === 'r') && (move2 === 's')) return 1
+  if((move1 === 's') && (move2 === 'r')) return -1
+  if((move1 === 'p') && (move2 === 's')) return -1
+  if((move1 === 'r') && (move2 === 'p')) return -1
 }
 
+
 function getCPUMove() {
-  // Your code here 
+  // Your code here
 }
 
 function processMove(cmd, cpu) {
-  // Your code here 
+  // Your code here
 }
 
 /******************************* MAIN FUNCTION *******************************/
@@ -48,11 +65,12 @@ function promptInput(rl) {
 
     if (cmd === 'h') {
       console.log("\nHelp:\n");
-      console.log("  Type 'r' for Rock");
-      console.log("  Type 'p' for Paper");
-      console.log("  Type 's' for Scissors");
-      console.log("  Type 'q' to quit");
-      console.log("  Type 'h' for a list of valid commands\n");
+      // console.log("  Type 'r' for Rock");
+      // console.log("  Type 'p' for Paper");
+      // console.log("  Type 's' for Scissors");
+      // console.log("  Type 'q' to quit");
+      // console.log("  Type 'h' for a list of valid commands\n");
+      printHelp()
     } else if (cmd === 'q') {
       rl.close();
       return;
